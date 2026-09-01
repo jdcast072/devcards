@@ -1,0 +1,14 @@
+.cards{
+    margin: 32px 64px;
+}
+
+.cards__title {
+    margin: 0 0 24px;
+    font-weight: 400;
+}
+
+.cards__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}

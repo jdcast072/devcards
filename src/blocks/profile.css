@@ -1,0 +1,124 @@
+.profile {
+  position: relative;
+  display: flex;
+  min-height: 184px;
+  margin: 32px 64px;
+  padding: 32px;
+  border: 1px solid #94a3b8;
+  border-radius: 12px;
+  column-gap: 32px;
+  align-items: center;
+  background-image: url("../images/background_profile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 35% 65%;
+}
+
+.profile__avatar {
+  position: relative;
+}
+
+.profile__image {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  border: 2px solid #2563eb;
+}
+
+.profile__button-edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__icon-edit {
+  width: 28px;
+  top: 70%;
+  right: 10%;
+  position: absolute;
+  background-color: #2563eb;
+  padding: 6px;
+  border-radius: 50%;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.profile__info {
+  max-width: 40%;
+  align-items: flex-start;
+}
+
+.profile__name {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+
+.profile__profession {
+  font-size: 20px;
+  font-weight: 300;
+  color: #2581eb;
+  margin: 6px 0;
+}
+.proflle__description {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profile__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+  line-height: 10px;
+  height: auto;
+}
+
+.profile__technology {
+  border-right: 1px solid #94a3b8;
+}
+
+.profile__label {
+  font-size: 12px;
+}
+
+.profile__image-favorite {
+  height: 24px;
+}
+
+.profile__button-info {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #f8fafc;
+  background: transparent;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.profile__icon-info {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #f8fafc;
+  mask: url("../images/icons/edit-white.svg") center / contain no-repeat;
+  -webkit-mask: url("../images/icons/edit-white.svg") center / contain no-repeat;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+
+.profile__icon-edit:hover {
+  transform: scale(1.05);
+  background-color: #4e7adb;
+}
+
+.profile__button-info:hover {
+  border-color: #2563eb;
+}
+
+.profile__button-info:hover .profile__icon-info {
+  transform: scale(1.05);
+  background-color: #4e7adb;
+}

@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.page {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+}

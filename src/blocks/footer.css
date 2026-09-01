@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-radius: 0 0 8px 8px;
+  background-color: #1e293b;
+  border: 1px solid #94a3b8;
+}
+
+.footer__banner {
+  display: flex;
+  place-items: center;
+  column-gap: 8px;
+}
+
+.footer__list{
+    display: flex;
+    flex-direction: flex-start;
+    column-gap: 16px;
+    padding: 0;
+}
+
+.footer__list-item {
+  display: flex;
+}
+.footer__social-icon{
+    width: 36px;
+    height: 36px;
+    padding: 2px;
+    border-radius: 45%;
+    border: 1.5px solid #000;
+    background-color: #F8FAFC;
+}

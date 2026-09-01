@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Tarjetas de desarrollo de las tecnologías que más me gustan y uso"
+    />
+    <meta name="author" content="Juan Diego Castañeda" />
+    <meta
+      name="keywords"
+      content="DevCards, IT, DevWeb, Desarrollo web, Portafolio"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/pages/index.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>DevCards</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header__logo">
+          <img
+            class="header__icon"
+            src="src/images/icons/code-xml.svg"
+            alt="Logo DevCards"
+          />
+          <h1 class="header__title">
+            Dev<span class="header__span-accent">Cards</span>
+          </h1>
+        </div>
+        <div class="header__account">
+          <button class="header__button-add">
+            <span class="header__span-add">+</span
+            ><span class="header__span-text">Nueva Tecnología</span>
+          </button>
+          <img
+            class="header__avatar"
+            src="./src/images/html_icon.png"
+            alt="header profile"
+          />
+        </div>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar">
+            <img
+              class="profile__image"
+              src="./src/images/css_icon.png"
+              alt="image profile"
+            />
+            <button class="profile__button-edit">
+              <img
+                class="profile__icon-edit"
+                src="./src/images/icons/edit-white.svg"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="profile__info">
+            <h2 class="profile__name">Nombre perfil</h2>
+            <h3 class="profile__profession">Profesión</h3>
+            <p class="proflle__description">
+              Apasionado por la infraestructura, el código y la automatización.
+              Siempre aprendiendo algo nuevo.
+            </p>
+            <div class="profile__stats">
+              <div class="profile__technology">
+                <img
+                  class="profile__image-tech"
+                  src="./src/images/icons/webhook-purple.svg"
+                  alt="tech"
+                />
+                <p class="profile__count-tech profile__count">1</p>
+                <p class="profile__label-tech profile__label">Tecnologías</p>
+              </div>
+              <div class="profile__favorite">
+                <img
+                  class="profile__image-favorite"
+                  src="./src/images/icons/heart-fea690.svg"
+                  alt="fav"
+                />
+                <p class="profile__count-fav profile__count">1</p>
+                <p class="profile__label-fav profile__label">Favoritos</p>
+              </div>
+            </div>
+          </div>
+          <button class="profile__button-info">
+            <span class="profile__icon-info"></span>
+          </button>
+        </section>
+        <section class="cards">
+          <h2 class="cards__title">Mis Tecnologías</h2>
+          <div class="card__list">
+            <article class="card">
+              <img
+                class="card__image"
+                src="https://www.svgrepo.com/show/349402/html5.svg"
+                alt="testing-html5"
+              />
+              <div class="card__content">
+                <h3 class="card__title">HTML5</h3>
+
+                <p class="card__category">Frontend</p>
+
+                <p class="card__description">
+                  Lenguaje de marcado para estructurar contenido web.
+                </p>
+
+                <div class="card__actions">
+                  <button
+                    class="card__button"
+                    type="button"
+                    aria-label="Eliminar tarjetas"
+                  >
+                    <span
+                      class="card__button-image card__button-remove"
+                      aria-hidden="true"
+                    >
+                    </span>
+                  </button>
+                  <button
+                    class="card__button"
+                    type="button"
+                    aria-label="Agregar a favoritos"
+                  >
+                    <span
+                      class="card__button-image card__button-like"
+                      aria-hidden="true"
+                    >
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <template id="card-template">
+          <article class="card">
+            <img
+              class="card__image"
+              src="https://www.svgrepo.com/show/349402/html5.svg"
+              alt="testing-html5"
+            />
+            <div class="card__content">
+              <h3 class="card__title">HTML5</h3>
+
+              <p class="card__category">Frontend</p>
+
+              <p class="card__description">
+                Lenguaje de marcado para estructurar contenido web.
+              </p>
+
+              <div class="card__actions">
+                <button
+                  class="card__button"
+                  type="button"
+                  aria-label="Eliminar tarjetas"
+                >
+                  <span
+                    class="card__button-image card__button-remove"
+                    aria-hidden="true"
+                  >
+                  </span>
+                </button>
+                <button
+                  class="card__button"
+                  type="button"
+                  aria-label="Agregar a favoritos"
+                >
+                  <span
+                    class="card__button-image card__button-like"
+                    aria-hidden="true"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </template>
+      </main>
+      <footer class="footer">
+        <div class="footer__banner">
+          <img src="./src/images/icons/code-xml.svg" alt="code logo" />
+          <p class="footer__copyright">
+            DevCards @2026 • Construyendo el futuro, una línea de código a la
+            vez.
+          </p>
+        </div>
+        <div class="footer__social">
+          <ul class="footer__list">
+            <li class="footer__list-item">
+              <a class="footer__social-link" href=""
+                ><img
+                  class="footer__social-icon"
+                  src="./src/images/icons/github.svg"
+                  alt=""
+              /></a>
+            </li>
+            <li class="footer__list-item">
+              <a class="footer__social-link" href=""
+                ><img
+                  class="footer__social-icon"
+                  src="./src/images/icons/linkedin.svg"
+                  alt=""
+              /></a>
+            </li>
+            <li class="footer__list-item">
+              <a class="footer__social-link" href=""
+                ><img
+                  class="footer__social-icon"
+                  src="./src/images/icons/twitter.svg"
+                  alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+      <div class="popup" id="popup-edit-profile">
+        <div class="popup__container">
+          <button class="popup__close" type="button" aria-label="Cerrar">
+            <span class="popup__close-icon"></span>
+          </button>
+
+          <h2 class="popup__title">Modificar perfil</h2>
+
+          <form class="form" id="form-edit-profile">
+            <label class="form__field">
+              <span class="form__label">Nombre</span>
+              <input
+                class="form__input"
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">Profesión</span>
+              <input
+                class="form__input"
+                type="text"
+                name="profession"
+                placeholder="Profesión"
+                required
+                minlength="2"
+                maxlength="60"
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">Descripción</span>
+              <textarea
+                class="form__input form__input_type_description"
+                name="description"
+                placeholder="Descripción"
+                required
+                minlength="2"
+                maxlength="200"
+              ></textarea>
+              <span class="form__error"></span>
+            </label>
+
+            <button class="form__button" type="submit">Guardar cambios</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup-edit-avatar">
+        <div class="popup__container">
+          <button class="popup__close" type="button" aria-label="Cerrar">
+            <span class="popup__close-icon"></span>
+          </button>
+
+          <h2 class="popup__title">Cambiar imagen de perfil</h2>
+
+          <form class="form" id="form-edit-avatar">
+            <label class="form__field">
+              <span class="form__label">URL de la imagen</span>
+              <input
+                class="form__input"
+                type="url"
+                name="avatar"
+                placeholder="https://ejemplo.com/imagen.jpg"
+                required
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <button class="form__button" type="submit">Guardar</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup-add-technology">
+        <div class="popup__container">
+          <button class="popup__close" type="button" aria-label="Cerrar">
+            <span class="popup__close-icon"></span>
+          </button>
+
+          <h2 class="popup__title">Nueva tecnología</h2>
+
+          <form class="form" id="form-add-technology">
+            <label class="form__field">
+              <span class="form__label">Nombre</span>
+              <input
+                class="form__input"
+                type="text"
+                name="name"
+                placeholder="Ej. React"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">Categoría</span>
+              <input
+                class="form__input"
+                type="text"
+                name="category"
+                placeholder="Ej. Frontend"
+                required
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">Descripción</span>
+              <textarea
+                class="form__input form__input_type_description"
+                name="description"
+                placeholder="Describe brevemente la tecnología"
+                required
+                maxlength="200"
+              ></textarea>
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">URL de la imagen</span>
+              <input
+                class="form__input"
+                type="url"
+                name="image"
+                placeholder="https://ejemplo.com/imagen.svg"
+                required
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <button class="form__button" type="submit">Crear tecnología</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup-add-card">
+        <div class="popup__container">
+          <button class="popup__close" type="button" aria-label="Cerrar">
+            <span class="popup__close-icon"></span>
+          </button>
+
+          <h2 class="popup__title">Nueva tarjeta</h2>
+
+          <form class="form" id="form-add-card">
+            <label class="form__field">
+              <span class="form__label">Título</span>
+              <input
+                class="form__input"
+                type="text"
+                name="title"
+                placeholder="Ej. Docker"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">Descripción</span>
+              <textarea
+                class="form__input form__input_type_description"
+                name="description"
+                placeholder="Descripción de la tecnología"
+                required
+                maxlength="200"
+              ></textarea>
+              <span class="form__error"></span>
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">URL de la imagen</span>
+              <input
+                class="form__input"
+                type="url"
+                name="image"
+                placeholder="https://ejemplo.com/imagen.svg"
+                required
+              />
+              <span class="form__error"></span>
+            </label>
+
+            <button class="form__button" type="submit">Crear tarjeta</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="src/pages/index.js"></script>
+</html>

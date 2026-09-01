@@ -1,0 +1,104 @@
+.card{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 228px;
+    background-color: #1E2938;
+    border: 0.5px solid #94a3b8;
+    border-radius: 12px;
+    min-height: 280px;
+    padding: 28px;
+}
+
+.card__image{
+    align-self: center;
+    width: 64px;
+    max-width: 64px;
+}
+
+.card__content{
+    place-items: center;
+}
+
+.card__title{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card__category{
+    margin-top: 0;
+    font-size: 14px;
+    color: #2563EB;
+}
+
+.card__description{
+    max-width: 180px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.card__actions{
+    padding-top: 18%;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card__button{
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.card__button-remove {
+  width: 24px;
+  height: 24px;
+  display: block;
+
+  background-color: #ffffff;
+
+  mask: url("../images/icons/trash.svg") center / contain no-repeat;
+  -webkit-mask: url("../images/icons/trash.svg") center / contain no-repeat;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card__button:hover .card__button-remove {
+  background-color: #4e7adb;
+  transform: scale(1.1);
+}
+
+
+.card__button-like {
+  width: 24px;
+  height: 24px;
+  display: block;
+
+  background-color: #f8fafc;
+
+  mask: url("../images/icons/heart.svg") center / contain no-repeat;
+  -webkit-mask: url("../images/icons/heart.svg") center / contain no-repeat;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card__button:hover .card__button-like {
+  background-color: #f56359;
+  transform: scale(1.1);
+}
+
+.card__button-like_is-liked {
+  background-color: #f56359;
+  mask-image: url("../images/icons/heart-filled.svg");
+  -webkit-mask-image: url("../images/icons/heart-filled.svg");
+}
