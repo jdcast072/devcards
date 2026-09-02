@@ -59,11 +59,8 @@
           </div>
           <div class="profile__info">
             <h2 class="profile__name">Nombre perfil</h2>
-            <h3 class="profile__profession">Profesión</h3>
-            <p class="proflle__description">
-              Apasionado por la infraestructura, el código y la automatización.
-              Siempre aprendiendo algo nuevo.
-            </p>
+            <h3 class="profile__career">Profesión</h3>
+            <p class="proflle__description">Apasionado por la infraestructura, el código y la automatización. Siempre aprendiendo algo nuevo.</p>
             <div class="profile__stats">
               <div class="profile__technology">
                 <img
@@ -224,47 +221,50 @@
 
           <h2 class="popup__title">Modificar perfil</h2>
 
-          <form class="form" id="form-edit-profile">
-            <label class="form__field">
-              <span class="form__label">Nombre</span>
-              <input
-                class="form__input"
-                type="text"
-                name="name"
-                placeholder="Nombre"
-                required
-                minlength="2"
-                maxlength="40"
-              />
-              <span class="form__error"></span>
+          <form class="popup__form" id="form-edit-profile">
+            <label class="popup__field" for="profile-name">
+              <span class="popup__label">Nombre</span>
             </label>
+            <input
+              class="popup__input popup__input_type_name"
+              id="profile-name"
+              type="text"
+              name="nombre"
+              placeholder="Nombre"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">Profesión</span>
-              <input
-                class="form__input"
-                type="text"
-                name="profession"
-                placeholder="Profesión"
-                required
-                minlength="2"
-                maxlength="60"
-              />
-              <span class="form__error"></span>
+            <label class="popup__field" for="profile-career">
+              <span class="popup__label">Profesión</span>
             </label>
+            <input
+              class="popup__input popup__input_type_career"
+              type="text"
+              id="profile-career"
+              name="career"
+              placeholder="Profesión"
+              required
+              minlength="2"
+              maxlength="60"
+            />
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">Descripción</span>
-              <textarea
-                class="form__input form__input_type_description"
-                name="description"
-                placeholder="Descripción"
-                required
-                minlength="2"
-                maxlength="200"
-              ></textarea>
-              <span class="form__error"></span>
+            <label class="popup__field" for="profile-description">
+              <span class="popup__label">Descripción</span>
             </label>
+            <textarea
+              class="popup__input popup__input_type_description"
+              id="profile-description"
+              name="description"
+              placeholder="Descripción"
+              required
+              minlength="2"
+              maxlength="200"
+            ></textarea>
+            <span class="form__error"></span>
 
             <button class="form__button" type="submit">Guardar cambios</button>
           </form>
@@ -278,18 +278,19 @@
 
           <h2 class="popup__title">Cambiar imagen de perfil</h2>
 
-          <form class="form" id="form-edit-avatar">
-            <label class="form__field">
-              <span class="form__label">URL de la imagen</span>
-              <input
-                class="form__input"
-                type="url"
-                name="avatar"
-                placeholder="https://ejemplo.com/imagen.jpg"
-                required
-              />
-              <span class="form__error"></span>
+          <form class="popup__form" id="form-edit-avatar">
+            <label class="popup__field" for="avatar-link">
+              <span class="popup__label">URL de la imagen</span>
             </label>
+            <input
+              class="popup__input popup__input_type_avatar"
+              type="url"
+              id="avatar-link"
+              name="avatar"
+              placeholder="https://ejemplo.com/imagen.jpg"
+              required
+            />
+            <span class="form__error"></span>
 
             <button class="form__button" type="submit">Guardar</button>
           </form>
@@ -303,56 +304,60 @@
 
           <h2 class="popup__title">Nueva tecnología</h2>
 
-          <form class="form" id="form-add-technology">
-            <label class="form__field">
-              <span class="form__label">Nombre</span>
-              <input
-                class="form__input"
-                type="text"
-                name="name"
-                placeholder="Ej. React"
-                required
-                minlength="2"
-                maxlength="40"
-              />
-              <span class="form__error"></span>
+          <form class="popup__form" id="form-add-technology">
+            <label class="popup__field" for="tecnology-name">
+              <span class="popup__label">Nombre</span>
             </label>
+            <input
+              class="popup__input popup__input_type_technology"
+              type="text"
+              id="tecnology-name"
+              name="nombre"
+              placeholder="Ej. React"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">Categoría</span>
-              <input
-                class="form__input"
-                type="text"
-                name="category"
-                placeholder="Ej. Frontend"
-                required
-              />
-              <span class="form__error"></span>
+            <label class="popup__field" for="category-name">
+              <span class="popup__label">Categoría</span>
             </label>
+            <input
+              class="popup__input popup__input_type_category"
+              type="text"
+              id="category-name"
+              name="category"
+              placeholder="Ej. Frontend"
+              required
+            />
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">Descripción</span>
-              <textarea
-                class="form__input form__input_type_description"
-                name="description"
-                placeholder="Describe brevemente la tecnología"
-                required
-                maxlength="200"
-              ></textarea>
-              <span class="form__error"></span>
+            <label class="popup__field" for="category-description">
+              <span class="popup__label">Descripción</span>
             </label>
+            <textarea
+              class="popup__input popup__input_type_description"
+              id="category-description"
+              name="description"
+              placeholder="Describe brevemente la tecnología"
+              required
+              maxlength="200"
+            ></textarea>
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">URL de la imagen</span>
-              <input
-                class="form__input"
-                type="url"
-                name="image"
-                placeholder="https://ejemplo.com/imagen.svg"
-                required
-              />
-              <span class="form__error"></span>
+            <label class="popup__field" for="tecnology-link">
+              <span class="popup__label">URL de la imagen</span>
             </label>
+            <input
+              class="popup__input popup__input_type_link"
+              type="url"
+              id="tecnology-link"
+              name="image"
+              placeholder="https://ejemplo.com/imagen.svg"
+              required
+            />
+            <span class="form__error"></span>
 
             <button class="form__button" type="submit">Crear tecnología</button>
           </form>
@@ -366,44 +371,47 @@
 
           <h2 class="popup__title">Nueva tarjeta</h2>
 
-          <form class="form" id="form-add-card">
-            <label class="form__field">
-              <span class="form__label">Título</span>
-              <input
-                class="form__input"
-                type="text"
-                name="title"
-                placeholder="Ej. Docker"
-                required
-                minlength="2"
-                maxlength="40"
-              />
-              <span class="form__error"></span>
+          <form class="popup__form" id="form-add-card">
+            <label class="popup__field" for="card-title">
+              <span class="popup__label">Título</span>
             </label>
+            <input
+              class="popup__input popup__input_type_title-card"
+              type="text"
+              id="card-title"
+              name="title"
+              placeholder="Ej. Docker"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">Descripción</span>
-              <textarea
-                class="form__input form__input_type_description"
-                name="description"
-                placeholder="Descripción de la tecnología"
-                required
-                maxlength="200"
-              ></textarea>
-              <span class="form__error"></span>
+            <label class="popup__field" for="card-descroption">
+              <span class="popup__label">Descripción</span>
             </label>
+            <textarea
+              class="popup__input popup__input_type_description"
+              id="card-descroption"
+              name="description"
+              placeholder="Descripción de la tecnología"
+              required
+              maxlength="200"
+            ></textarea>
+            <span class="form__error"></span>
 
-            <label class="form__field">
-              <span class="form__label">URL de la imagen</span>
-              <input
-                class="form__input"
-                type="url"
-                name="image"
-                placeholder="https://ejemplo.com/imagen.svg"
-                required
-              />
-              <span class="form__error"></span>
+            <label class="popup__field" for="image-link">
+              <span class="popup__label">URL de la imagen</span>
             </label>
+            <input
+              class="popup__input popup__input_type_image-link"
+              id="image-link"
+              type="url"
+              name="image"
+              placeholder="https://ejemplo.com/imagen.svg"
+              required
+            />
+            <span class="form__error"></span>
 
             <button class="form__button" type="submit">Crear tarjeta</button>
           </form>
