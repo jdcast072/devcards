@@ -218,6 +218,12 @@ function handleCardFormSubmit(evt){
     closeModal(popupNewTechnology);
 }
 
+//Función expresiva, retornar y renderizar las tarjetas del array establecido
+function renderCard(name, category, description, link, container) {
+  const cardElement = getCardElement(name, category, description, link);
+  container.prepend(cardElement);
+}
+
 // ---- 6. Listeners de los popups ----
 /** Modal de edición del perfil */
 
@@ -263,12 +269,8 @@ addCardTech.addEventListener("submit",handleCardFormSubmit)
 /** ---- */
 
 // ---- 7. Renderizado inicial ----
-//Función expresiva, retornar y renderizar las tarjetas del array establecido
-function renderCard(name, category, description, link, container) {
-  const cardElement = getCardElement(name, category, description, link);
-  container.prepend(cardElement);
-}
 
+// Función expresiva callback para recorrer el array y sus objetos. 
 technologies.forEach((item) => {
   renderCard(item.name, item.category, item.description, item.link, cardContainer);
 });
