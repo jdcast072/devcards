@@ -1,3 +1,4 @@
+// ---- 1. Array de datos ----
 const technologies = [
   {
     name: "HTML5",
@@ -20,7 +21,7 @@ const technologies = [
   {
     name: "Git",
     category: "Herramientas",
-    description: "Sistema de control de versiones distribuido.",
+    description: "Sistema de gestión del control de versiones.",
     link: "https://www.svgrepo.com/show/452210/git.svg",
   },
   {
@@ -63,15 +64,36 @@ const technologies = [
 //   console.log(item.link);
 // });
 
+// ---- 2. Referencias al DOM ----
 // Acceso al botón de: Editar perfil
 const buttonProfileInfo = document.querySelector(".profile__button-info");
 // Popup: Editar perfil
 const popupEditProfile = document.querySelector("#popup-edit-profile");
-const closeButton = popupEditProfile.querySelector(".popup__close");
+const profileCloseButton = popupEditProfile.querySelector(".popup__close");
 // Acceso al formulario
 const formElement = popupEditProfile.querySelector(".popup__form");
 
+// Acceso al botón de: Nueva Tecnología
+const buttonAddTechonolgy = document.querySelector(".header__button-add");
+const popupNewTechnology = document.querySelector("#popup-add-technology");
+const TechCloseButton = popupNewTechnology.querySelector(".popup__close");
+//Acceso a los inputs de: Nueva tecnología; ir a la función controladora handleCardFormSubmit.
+const inputTech = popupNewTechnology.querySelector(".popup__input_type_technology"); 
+const inputCategory = popupNewTechnology.querySelector(".popup__input_type_category"); 
+const inputDescription = popupNewTechnology.querySelector(".popup__input_type_description"); 
+const inputImage = popupNewTechnology.querySelector(".popup__input_type_link"); 
+const addCardTech = popupNewTechnology.querySelector(".popup__form");
 
+// Acceso al botón de: Foto de Avatar
+const buttonAvatar = document.querySelector(".profile__button-edit");
+const popupAvatar = document.querySelector("#popup-edit-avatar");
+const avatarCloseButton = popupAvatar.querySelector(".popup__close");
+const formAvatar = popupAvatar.querySelector(".popup__form");
+
+// Variable que accede al contenedor en donde se encuentran las tarjetas
+const cardContainer = document.querySelector(".cards__list");
+
+// ---- 3. Funciones generales ----
 // Función declarativa como controlador para abrir modal
 function openModal(modal) {
   modal.classList.add("popup_is-opened");
@@ -82,6 +104,7 @@ function closeModal(modal) {
   modal.classList.remove("popup_is-opened");
 }
 
+// ---- 4. Funciones del perfil ----
 // Función declarativa, copiar los datos actuales al formulario de Perfil
 function fillProfileForm() {
   /** 1. Acceder a las clases de los elementos */
@@ -91,13 +114,17 @@ function fillProfileForm() {
   // Acceso a la clase del nombre de la profesión
   const profileCareer = document.querySelector(".profile__career").textContent;
   // Acceder a la descripción
-  const profileDescription = document.querySelector(".profile__description").textContent;
+  const profileDescription = document.querySelector(
+    ".profile__description",
+  ).textContent;
+
   /** 2. Acceder a los inputs */
   // Acceder a los campos: Nombre, Profesión y Descripción.
   const inputName = document.querySelector(".popup__input_type_name");
   const CareerInput = document.querySelector(".popup__input_type_career");
   const DescriptionInput = document.querySelector(".popup__input_type_description");
-  /** 3. Copiar los datos por value*/
+
+  /** 3. Copiar los datos por value */
   inputName.value = profileName;
   CareerInput.value = profileCareer;
   DescriptionInput.value = profileDescription;
@@ -110,52 +137,138 @@ function handleOpenEditModal() {
 }
 
 // Función declarativa, actualizaar datos al enviarlos dentro del formulario perfil
-function handleProfileFormSubmit(evt){
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+
   // 1. Acceder a los campos: Nombre, Profesión y Descripción.
   const inputName = document.querySelector(".popup__input_type_name");
   const CareerInput = document.querySelector(".popup__input_type_career");
   const DescriptionInput = document.querySelector(".popup__input_type_description");
+
   // 2. Declarar y agregar los valores (value) de los inputs a estas variables
   const valueName = inputName.value;
-  const valueCareer= CareerInput.value;
+  const valueCareer = CareerInput.value;
   const valueDescription = DescriptionInput.value;
+
   // 3. Acceder a la clase de Nombre, Profesión y Descripción del perfil para actualizar los datos
   const profileName = document.querySelector(".profile__name");
   const profileCareer = document.querySelector(".profile__career");
   const profileDescription = document.querySelector(".profile__description");
+
   // 4. Ingresar los nuevos datos en los campos y ver actualizado los datos de profile
   profileName.textContent = valueName;
   profileCareer.textContent = valueCareer;
   profileDescription.textContent = valueDescription;
+
   closeModal(popupEditProfile);
 }
 
-// Función expresiva, detector, agregar y copiar los datos al hacer click en el botón de editar perfil
-buttonProfileInfo.addEventListener("click", handleOpenEditModal);
+function handleAvatarFormSubmit(evt){
+  evt.preventDefault();
+  const inputLink = document.querySelector('.popup__input_type_avatar');
+  const valueLink = inputLink.value;
+  const profileImage = document.querySelector(".profile__image");
+  const headerImage = document.querySelector(".header__avatar");
+  profileImage.src = valueLink;
+  headerImage.src = valueLink;
+  closeModal(popupAvatar);
+}
+
+// ---- 5. Función de creación de tarjetas ----
+// Función declarativa, retornas las tarjetas a partir del template card
+function getCardElement(name, category, description, link) {
+  // Clonar el template
+  const cardTemplate = document
+    .querySelector("#card-template")
+    .content.querySelector(".card");
+
+  const cardElement = cardTemplate.cloneNode(true);
+
+  // Acceder a las clases de los elementos del template que se van a personalizar y copiar
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardName = cardElement.querySelector(".card__title");
+  const cardCategory = cardElement.querySelector(".card__category");
+  const cardDescription = cardElement.querySelector(".card__description");
+
+  // Clonar según los parámetros que se van a pasar como argumentos
+  cardName.textContent = name;
+  cardCategory.textContent = category;
+  cardDescription.textContent = description;
+  cardImage.src = link;
+  cardImage.alt = name;
+
+  const likeButton = cardElement.querySelector(".card__button-like");
+  likeButton.addEventListener("click", (evt) => {
+    evt.target.classList.toggle("card__button-like_is-liked");
+  });
+
+  const removeButton = cardElement.querySelector(".card__button-remove");
+  removeButton.addEventListener("click", (evt) => {
+    evt.target.closest(".card").remove();
+  });
+
+  return cardElement;
+}
+// Función declarativa, controlador para agregar nueva tarjeta con datos.
+function handleCardFormSubmit(evt){
+  evt.preventDefault();
+  // Reutlización de la función renderizada 
+  renderCard(inputTech.value, inputCategory.value, inputDescription.value,
+    inputImage.value, cardContainer);
+    closeModal(popupNewTechnology);
+}
+
+// ---- 6. Listeners de los popups ----
+/** Modal de edición del perfil */
 
 // Función expresiva, detector para cerrar modal de editar perfil
-closeButton.addEventListener("click", () => {
+profileCloseButton.addEventListener("click", () => {
   closeModal(popupEditProfile);
 });
 
 // Función expresiva, detectar para enviar (submit) datos y envio del formulario
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
+// Función expresiva, detector, agregar y copiar los datos al hacer click en el botón de editar perfil
+buttonProfileInfo.addEventListener("click", handleOpenEditModal);
 
+/** ---- */
 
+/** Modal edición de foto de avatar */
+buttonAvatar.addEventListener("click", () => {
+  openModal(popupAvatar);
+});
 
-// const element = document.querySelector(".card");
-// const likeButton = document.querySelector(".card__button-like");
-// const removeButton = document.querySelector(".card__button-remove");
-// let isLiked = false;
+avatarCloseButton.addEventListener("click", () => {
+  closeModal(popupAvatar);
+});
+// Función expresiva, detector para cambiar la foto de perfil
+formAvatar.addEventListener("submit", handleAvatarFormSubmit);
 
-// likeButton.addEventListener("click", () => {
-//   isLiked = !isLiked;
+/** ---- */
 
-//   likeButton.classList.toggle("card__button-like_is-liked", isLiked);
-// });
+/** Modal de edición de la tarjeta */
 
-// removeButton.addEventListener("click", () => {
-//   element.remove();
-// });
+// Función expresiva, detector para abrir modal de Nueva tecnología
+buttonAddTechonolgy.addEventListener("click", () => {
+  openModal(popupNewTechnology);
+});
+// Función expresiva, detector para cerrar modal de Nueva tecnología
+TechCloseButton.addEventListener("click", () => {
+  closeModal(popupNewTechnology);
+});
+
+addCardTech.addEventListener("submit",handleCardFormSubmit)
+
+/** ---- */
+
+// ---- 7. Renderizado inicial ----
+//Función expresiva, retornar y renderizar las tarjetas del array establecido
+function renderCard(name, category, description, link, container) {
+  const cardElement = getCardElement(name, category, description, link);
+  container.prepend(cardElement);
+}
+
+technologies.forEach((item) => {
+  renderCard(item.name, item.category, item.description, item.link, cardContainer);
+});
