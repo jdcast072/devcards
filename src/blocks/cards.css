@@ -1,14 +1,21 @@
-.cards{
-    margin: 32px 64px;
+.cards {
+  margin: 32px 64px;
+  place-items: center;
 }
 
 .cards__title {
-    margin: 0 0 24px;
-    font-weight: 400;
+  justify-self: flex-start;
+  margin: 0 0 24px;
+  font-weight: 400;
 }
 
 .cards__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 282px);
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 282px);
+  grid-auto-rows: 360px;
+  gap: 24px;
+  list-style: none;
+  padding: 24px;
+  margin: 0;
+  place-items: center;
 }

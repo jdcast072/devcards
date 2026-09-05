@@ -1,24 +1,24 @@
 .card{
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 228px;
+    min-width: 100%;
+    height: 100%;
     background-color: #1E2938;
     border: 0.5px solid #94a3b8;
     border-radius: 12px;
-    min-height: 280px;
-    padding: 28px;
 }
 
 .card__image{
-    align-self: center;
     width: 64px;
     max-width: 64px;
 }
 
 .card__content{
+    display: flex;
+    flex-direction: column;
     place-items: center;
+    min-width: 100%;
+    padding: 40px;
 }
 
 .card__title{
@@ -34,22 +34,22 @@
 }
 
 .card__description{
-    max-width: 180px;
-    font-size: 12px;
+    min-width: 100%;
+    font-size: 15px;
     line-height: 1.5;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
-.card__actions{
-    padding-top: 18%;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+.card__actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: auto auto 0;
 }
 
 .card__button{
     background: transparent;
+    align-self: center;
     border: 0;
     padding: 0;
     cursor: pointer;
