@@ -1,4 +1,4 @@
-// ---- 1. Array de datos ----
+// ---- 1. Array de tecnologías ----
 const technologies = [
   {
     name: "HTML5",
@@ -57,40 +57,57 @@ const technologies = [
   },
 ];
 
-// technologies.forEach((item) => {
-//   console.log(item.name);
-//   console.log(item.category);
-//   console.log(item.description);
-//   console.log(item.link);
-// });
-
 // ---- 2. Referencias al DOM ----
-// Acceso al botón de: Editar perfil
+
+// Modal y formulario de nueva tecnología.
+const buttonAddTechnology = document.querySelector(".header__button-add");
+const popupNewTechnology = document.querySelector("#popup-add-technology");
+const technologyCloseButton = popupNewTechnology.querySelector(".popup__close");
+const inputTech = popupNewTechnology.querySelector(".popup__input_type_technology");
+const inputCategory = popupNewTechnology.querySelector(".popup__input_type_category");
+const inputTechDescription = popupNewTechnology.querySelector(".popup__input_type_description");
+const inputImage = popupNewTechnology.querySelector(".popup__input_type_link");
+const technologyForm = popupNewTechnology.querySelector(".popup__form");
+
+// Modal y formulario para editar el perfil.
 const buttonProfileInfo = document.querySelector(".profile__button-info");
-// Popup: Editar perfil
 const popupEditProfile = document.querySelector("#popup-edit-profile");
 const profileCloseButton = popupEditProfile.querySelector(".popup__close");
-// Acceso al formulario
 const formElement = popupEditProfile.querySelector(".popup__form");
+const inputName = popupEditProfile.querySelector(".popup__input_type_name");
+const inputCareer = popupEditProfile.querySelector(".popup__input_type_career");
+const inputDescription = popupEditProfile.querySelector(".popup__input_type_description");
+const profileName = document.querySelector(".profile__name");
+const profileCareer = document.querySelector(".profile__career");
+const profileDescription = document.querySelector(".profile__description");
 
-// Acceso al botón de: Nueva Tecnología
-const buttonAddTechonolgy = document.querySelector(".header__button-add");
-const popupNewTechnology = document.querySelector("#popup-add-technology");
-const TechCloseButton = popupNewTechnology.querySelector(".popup__close");
-//Acceso a los inputs de: Nueva tecnología; ir a la función controladora handleCardFormSubmit.
-const inputTech = popupNewTechnology.querySelector(".popup__input_type_technology"); 
-const inputCategory = popupNewTechnology.querySelector(".popup__input_type_category"); 
-const inputDescription = popupNewTechnology.querySelector(".popup__input_type_description"); 
-const inputImage = popupNewTechnology.querySelector(".popup__input_type_link"); 
-const addCardTech = popupNewTechnology.querySelector(".popup__form");
-
-// Acceso al botón de: Foto de Avatar
+// Modal y formulario para cambiar el avatar.
 const buttonAvatar = document.querySelector(".profile__button-edit");
 const popupAvatar = document.querySelector("#popup-edit-avatar");
 const avatarCloseButton = popupAvatar.querySelector(".popup__close");
 const formAvatar = popupAvatar.querySelector(".popup__form");
+const inputAvatar = popupAvatar.querySelector(".popup__input_type_avatar");
+const profileImage = document.querySelector(".profile__image");
+const headerImage = document.querySelector(".header__avatar");
 
-// Variable que accede al contenedor en donde se encuentran las tarjetas
+// Modal reutilizado para ampliar imágenes de perfil y de tarjetas.
+const popupImage = document.querySelector("#popup-image-card");
+const modalPicture = popupImage.querySelector(".popup__image");
+const modalCaption = popupImage.querySelector(".popup__caption");
+const modalCloseButton = popupImage.querySelector(".popup__close");
+
+// Contadores visibles del perfil.
+
+// Contador de tecnologias o tarjetas existentes
+let cardCount = technologies.length; // cantidad actual de tarjetas existentes dentro del array 
+const profileTechCount = document.querySelector(".profile__count-tech"); // Referencia a la clase de contador de tecnologías
+profileTechCount.textContent = cardCount; // Modificar el valor por texto del contador
+
+// Contador de favoritos
+let favoriteCount = 0; // Valor inicial de favoritos
+const profileFavoriteCount = document.querySelector(".profile__count-fav"); // Referencia a la clase del texto de favoritos
+
+// Contenedor único de las tarjetas generadas desde JavaScript.
 const cardContainer = document.querySelector(".cards__list");
 
 // ---- 3. Funciones generales ----
@@ -107,27 +124,10 @@ function closeModal(modal) {
 // ---- 4. Funciones del perfil ----
 // Función declarativa, copiar los datos actuales al formulario de Perfil
 function fillProfileForm() {
-  /** 1. Acceder a las clases de los elementos */
-  // textContent: Modicar el contenido de texto de la clase accedida
-  // Acceso a la clase del nombre del perfil y cambiar el texto del contenido
-  const profileName = document.querySelector(".profile__name").textContent;
-  // Acceso a la clase del nombre de la profesión
-  const profileCareer = document.querySelector(".profile__career").textContent;
-  // Acceder a la descripción
-  const profileDescription = document.querySelector(
-    ".profile__description",
-  ).textContent;
-
-  /** 2. Acceder a los inputs */
-  // Acceder a los campos: Nombre, Profesión y Descripción.
-  const inputName = document.querySelector(".popup__input_type_name");
-  const CareerInput = document.querySelector(".popup__input_type_career");
-  const DescriptionInput = document.querySelector(".popup__input_type_description");
-
-  /** 3. Copiar los datos por value */
-  inputName.value = profileName;
-  CareerInput.value = profileCareer;
-  DescriptionInput.value = profileDescription;
+  // Copiar el contenido visible del perfil en los campos del formulario.
+  inputName.value = profileName.textContent;
+  inputCareer.value = profileCareer.textContent;
+  inputDescription.value = profileDescription.textContent;
 }
 
 // Función declarativa, controlador para agregar los datos en los campos del formulario de perfil
@@ -136,111 +136,154 @@ function handleOpenEditModal() {
   openModal(popupEditProfile);
 }
 
-// Función declarativa, actualizaar datos al enviarlos dentro del formulario perfil
+// Actualizar los datos visibles del perfil al enviar el formulario.
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
-  // 1. Acceder a los campos: Nombre, Profesión y Descripción.
-  const inputName = document.querySelector(".popup__input_type_name");
-  const CareerInput = document.querySelector(".popup__input_type_career");
-  const DescriptionInput = document.querySelector(".popup__input_type_description");
-
-  // 2. Declarar y agregar los valores (value) de los inputs a estas variables
-  const valueName = inputName.value;
-  const valueCareer = CareerInput.value;
-  const valueDescription = DescriptionInput.value;
-
-  // 3. Acceder a la clase de Nombre, Profesión y Descripción del perfil para actualizar los datos
-  const profileName = document.querySelector(".profile__name");
-  const profileCareer = document.querySelector(".profile__career");
-  const profileDescription = document.querySelector(".profile__description");
-
-  // 4. Ingresar los nuevos datos en los campos y ver actualizado los datos de profile
-  profileName.textContent = valueName;
-  profileCareer.textContent = valueCareer;
-  profileDescription.textContent = valueDescription;
+  profileName.textContent = inputName.value;
+  profileCareer.textContent = inputCareer.value;
+  profileDescription.textContent = inputDescription.value;
 
   closeModal(popupEditProfile);
 }
 
-function handleAvatarFormSubmit(evt){
+// Función declarativa para el cambio de imagen del avatar por medio de un link
+function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
-  const inputLink = document.querySelector('.popup__input_type_avatar');
-  const valueLink = inputLink.value;
-  const profileImage = document.querySelector(".profile__image");
-  const headerImage = document.querySelector(".header__avatar");
-  profileImage.src = valueLink;
-  headerImage.src = valueLink;
+  profileImage.src = inputAvatar.value;
+  headerImage.src = inputAvatar.value;
   closeModal(popupAvatar);
 }
 
-// ---- 5. Función de creación de tarjetas ----
-// Función declarativa, retornas las tarjetas a partir del template card
-function getCardElement(name, category, description, link) {
-  // Clonar el template
+// Preparar y abrir el modal de la imagen del perfil.
+function handleOpenAvatarModal(evt) {
+  evt.preventDefault();
+  modalPicture.src = profileImage.src;
+  modalPicture.alt = profileImage.alt;
+  modalCaption.textContent = "Imagen de perfil";
+  openModal(popupImage);
+}
+
+// ---- 5. Funciones de tarjetas ----
+
+// Actualizar el contador visible de tecnologías.
+function handlerCardTechCount(action) {
+  if (action === "add") {
+    cardCount++;
+  }
+
+  if (action === "remove") {
+    cardCount--;
+  }
+
+  profileTechCount.textContent = cardCount;
+}
+
+// Crear una tarjeta a partir del template y conectar sus acciones.
+// Se agregan valores predeterminados a los parámetros 
+function getCardElement(
+  name = "Sin nombre",
+  category = "Sin categoria",
+  description = "Sin descripción",
+  link = "../images/placeholder.jpg",
+) {
+  // Acceder al elemento id del template e ingresar a la clase de contenedor a clonar
   const cardTemplate = document
     .querySelector("#card-template")
     .content.querySelector(".card");
-
+  //Tomar todo el contenido de template y clonarlo
   const cardElement = cardTemplate.cloneNode(true);
 
-  // Acceder a las clases de los elementos del template que se van a personalizar y copiar
+  // Referencias a los elementos que reciben los datos de la tecnología.
   const cardImage = cardElement.querySelector(".card__image");
   const cardName = cardElement.querySelector(".card__title");
   const cardCategory = cardElement.querySelector(".card__category");
   const cardDescription = cardElement.querySelector(".card__description");
-
-  // Clonar según los parámetros que se van a pasar como argumentos
+  // Actualización de los datos con textContent, src y alt apuntando a los parámetros
   cardName.textContent = name;
   cardCategory.textContent = category;
   cardDescription.textContent = description;
   cardImage.src = link;
   cardImage.alt = name;
 
+  // Acceder al botón de favoritos
   const likeButton = cardElement.querySelector(".card__button-like");
+
+  // Cambiar el estado de favorito y mantener su contador actualizado.
+  function handlerFavoriteCount() {
+    if (likeButton.classList.contains("card__button-like_is-liked")) {
+      favoriteCount++;
+    } else {
+      favoriteCount--;
+    }
+    profileFavoriteCount.textContent = favoriteCount;
+  }
+
+  function handleRemoveFavorite() {
+    if (likeButton.classList.contains("card__button-like_is-liked")) {
+      favoriteCount--;
+    }
+    profileFavoriteCount.textContent = favoriteCount;
+  }
+
   likeButton.addEventListener("click", (evt) => {
-    evt.target.classList.toggle("card__button-like_is-liked");
+    evt.currentTarget.classList.toggle("card__button-like_is-liked");
+    handlerFavoriteCount();
   });
 
   const removeButton = cardElement.querySelector(".card__button-remove");
   removeButton.addEventListener("click", (evt) => {
-    evt.target.closest(".card").remove();
+    evt.currentTarget.closest(".card").remove(); // Eliminar tarjeta
+    handleRemoveFavorite(); // Llamar al controlador para eliminar de favoritos
+    handlerCardTechCount("remove"); // Reducir el contador de tecnologias
   });
 
+  // Abrir el modal con la imagen ampliada de la tarjeta.
+  cardImage.addEventListener("click", () => {
+    modalPicture.src = cardImage.src;
+    modalPicture.alt = cardImage.alt;
+    modalCaption.textContent = cardName.textContent;
+    openModal(popupImage);
+  });
+  // Retornar la tarjeta clonada
   return cardElement;
 }
-// Función declarativa, controlador para agregar nueva tarjeta con datos.
-function handleCardFormSubmit(evt){
+
+// Crear una tarjeta con los datos enviados desde el formulario.
+function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  // Reutlización de la función renderizada 
-  renderCard(inputTech.value, inputCategory.value, inputDescription.value,
-    inputImage.value, cardContainer);
-    closeModal(popupNewTechnology);
+  // Tomar los datos ingresados en los campos de agregar tarjeta
+  renderCard(
+    inputTech.value,
+    inputCategory.value,
+    inputTechDescription.value,
+    inputImage.value,
+    cardContainer,
+  );
+  closeModal(popupNewTechnology);
+  handlerCardTechCount("add"); // Aumentar contador de tarjetas actuales
 }
 
-//Función expresiva, retornar y renderizar las tarjetas del array establecido
+// Insertar una tarjeta en el contenedor indicado.
 function renderCard(name, category, description, link, container) {
-  const cardElement = getCardElement(name, category, description, link);
-  container.prepend(cardElement);
+  //Declarar variable con los argumentos de la tarjeta
+  const cardElement = getCardElement(name, category, description, link); 
+  container.prepend(cardElement); // Agregar tarjeta antes del primero elemento secundario
 }
 
-// ---- 6. Listeners de los popups ----
-/** Modal de edición del perfil */
-
-// Función expresiva, detector para cerrar modal de editar perfil
+// ---- 6. Listeners ----
+// Perfil.
 profileCloseButton.addEventListener("click", () => {
   closeModal(popupEditProfile);
 });
 
-// Función expresiva, detectar para enviar (submit) datos y envio del formulario
 formElement.addEventListener("submit", handleProfileFormSubmit);
-
-// Función expresiva, detector, agregar y copiar los datos al hacer click en el botón de editar perfil
 buttonProfileInfo.addEventListener("click", handleOpenEditModal);
+profileImage.addEventListener("click", handleOpenAvatarModal);
+modalCloseButton.addEventListener("click", () => {
+  closeModal(popupImage);
+});
 
-/** ---- */
-
-/** Modal edición de foto de avatar */
+// Avatar.
 buttonAvatar.addEventListener("click", () => {
   openModal(popupAvatar);
 });
@@ -248,29 +291,26 @@ buttonAvatar.addEventListener("click", () => {
 avatarCloseButton.addEventListener("click", () => {
   closeModal(popupAvatar);
 });
-// Función expresiva, detector para cambiar la foto de perfil
 formAvatar.addEventListener("submit", handleAvatarFormSubmit);
 
-/** ---- */
-
-/** Modal de edición de la tarjeta */
-
-// Función expresiva, detector para abrir modal de Nueva tecnología
-buttonAddTechonolgy.addEventListener("click", () => {
+// Nueva tecnología.
+buttonAddTechnology.addEventListener("click", () => {
   openModal(popupNewTechnology);
 });
-// Función expresiva, detector para cerrar modal de Nueva tecnología
-TechCloseButton.addEventListener("click", () => {
+technologyCloseButton.addEventListener("click", () => {
   closeModal(popupNewTechnology);
 });
-
-addCardTech.addEventListener("submit",handleCardFormSubmit)
-
-/** ---- */
+technologyForm.addEventListener("submit", handleCardFormSubmit);
 
 // ---- 7. Renderizado inicial ----
 
-// Función expresiva callback para recorrer el array y sus objetos. 
+// Generar las nueve tarjetas iniciales exclusivamente desde el array.
 technologies.forEach((item) => {
-  renderCard(item.name, item.category, item.description, item.link, cardContainer);
+  renderCard(
+    item.name,
+    item.category,
+    item.description,
+    item.link,
+    cardContainer,
+  );
 });

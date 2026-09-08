@@ -19,8 +19,9 @@
 }
 
 .profile__image {
-  max-width: 120px;
-  max-height: 120px;
+  position: relative;
+  min-width: 120px;
+  min-height: 120px;
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -113,7 +114,6 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-
 .profile__icon-edit:hover {
   transform: scale(1.05);
   background-color: #4e7adb;
@@ -126,4 +126,9 @@
 .profile__button-info:hover .profile__icon-info {
   transform: scale(1.05);
   background-color: #4e7adb;
+}
+
+.profile__image:hover {
+  opacity: .6;
+  cursor: pointer;
 }

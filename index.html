@@ -60,7 +60,10 @@
           <div class="profile__info">
             <h2 class="profile__name">Nombre perfil</h2>
             <h3 class="profile__career">Profesión</h3>
-            <p class="profile__description">Apasionado por la infraestructura, el código y la automatización. Siempre aprendiendo algo nuevo.</p>
+            <p class="profile__description">
+              Apasionado por la infraestructura, el código y la automatización.
+              Siempre aprendiendo algo nuevo.
+            </p>
             <div class="profile__stats">
               <div class="profile__technology">
                 <img
@@ -68,7 +71,7 @@
                   src="./src/images/icons/webhook-purple.svg"
                   alt="tech"
                 />
-                <p class="profile__count-tech profile__count">1</p>
+                <p class="profile__count-tech profile__count">0</p>
                 <p class="profile__label-tech profile__label">Tecnologías</p>
               </div>
               <div class="profile__favorite">
@@ -77,7 +80,7 @@
                   src="./src/images/icons/heart-fea690.svg"
                   alt="fav"
                 />
-                <p class="profile__count-fav profile__count">1</p>
+                <p class="profile__count-fav profile__count">0</p>
                 <p class="profile__label-fav profile__label">Favoritos</p>
               </div>
             </div>
@@ -88,64 +91,22 @@
         </section>
         <section class="cards">
           <h2 class="cards__title">Mis Tecnologías</h2>
-          <ul class="cards__list">
-            <!-- <li class="card">
-              <div class="card__content">
-                <img
-                  class="card__image"
-                  src="https://www.svgrepo.com/show/349402/html5.svg"
-                  alt="testing-html5"
-                />
-                <h3 class="card__title">HTML5</h3>
-
-                <p class="card__category">Frontend</p>
-
-                <p class="card__description">
-                  Lenguaje de marcado para estructurar contenido web.
-                </p>
-
-                <div class="card__actions">
-                  <button
-                    class="card__button"
-                    type="button"
-                    aria-label="Eliminar tarjetas"
-                  >
-                    <span
-                      class="card__button-image card__button-remove"
-                      aria-hidden="true"
-                    >
-                    </span>
-                  </button>
-                  <button
-                    class="card__button"
-                    type="button"
-                    aria-label="Agregar a favoritos"
-                  >
-                    <span
-                      class="card__button-image card__button-like"
-                      aria-hidden="true"
-                    >
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </li>
-          </ul> -->
+          <ul class="cards__list"></ul>
         </section>
+
         <template id="card-template">
           <li class="card">
             <div class="card__content">
               <img
                 class="card__image"
-                src="https://www.svgrepo.com/show/349402/html5.svg"
-                alt="testing-html5"
+                src=""
+                alt=""
               />
-              <h3 class="card__title">HTML5</h3>
+              <h3 class="card__title"></h3>
 
-              <p class="card__category">Frontend</p>
+              <p class="card__category"></p>
 
               <p class="card__description">
-                Lenguaje de marcado para estructurar contenido web.
               </p>
 
               <div class="card__actions">
@@ -262,7 +223,7 @@
               placeholder="Descripción"
               required
               minlength="2"
-              maxlength="200"
+              maxlength="120"
             ></textarea>
             <span class="form__error"></span>
 
@@ -305,13 +266,13 @@
           <h2 class="popup__title">Nueva tecnología</h2>
 
           <form class="popup__form" id="form-add-technology">
-            <label class="popup__field" for="tecnology-name">
+            <label class="popup__field" for="technology-name">
               <span class="popup__label">Nombre</span>
             </label>
             <input
               class="popup__input popup__input_type_technology"
               type="text"
-              id="tecnology-name"
+              id="technology-name"
               name="nombre"
               placeholder="Ej. React"
               required
@@ -346,13 +307,13 @@
             ></textarea>
             <span class="form__error"></span>
 
-            <label class="popup__field" for="tecnology-link">
+            <label class="popup__field" for="technology-link">
               <span class="popup__label">URL de la imagen</span>
             </label>
             <input
               class="popup__input popup__input_type_link"
               type="url"
-              id="tecnology-link"
+              id="technology-link"
               name="image"
               placeholder="https://ejemplo.com/imagen.svg"
               required
@@ -363,58 +324,11 @@
           </form>
         </div>
       </div>
-      <div class="popup" id="popup-add-card">
-        <div class="popup__container">
-          <button class="popup__close" type="button" aria-label="Cerrar">
-            <span class="popup__close-icon"></span>
-          </button>
-
-          <h2 class="popup__title">Nueva tarjeta</h2>
-
-          <form class="popup__form" id="form-add-card">
-            <label class="popup__field" for="card-title">
-              <span class="popup__label">Título</span>
-            </label>
-            <input
-              class="popup__input popup__input_type_title-card"
-              type="text"
-              id="card-title"
-              name="title"
-              placeholder="Ej. Docker"
-              required
-              minlength="2"
-              maxlength="40"
-            />
-            <span class="form__error"></span>
-
-            <label class="popup__field" for="card-descroption">
-              <span class="popup__label">Descripción</span>
-            </label>
-            <textarea
-              class="popup__input popup__input_type_description"
-              id="card-descroption"
-              name="description"
-              placeholder="Descripción de la tecnología"
-              required
-              maxlength="200"
-            ></textarea>
-            <span class="form__error"></span>
-
-            <label class="popup__field" for="image-link">
-              <span class="popup__label">URL de la imagen</span>
-            </label>
-            <input
-              class="popup__input popup__input_type_image-link"
-              id="image-link"
-              type="url"
-              name="image"
-              placeholder="https://ejemplo.com/imagen.svg"
-              required
-            />
-            <span class="form__error"></span>
-
-            <button class="form__button" type="submit">Crear tarjeta</button>
-          </form>
+      <div class="popup popup_type_image" id="popup-image-card">
+        <div class="popup__container popup__container_type_image">
+          <button class="popup__close"></button>
+          <p class="popup__caption"></p>
+          <img class="popup__image" src="" alt="" />
         </div>
       </div>
     </div>

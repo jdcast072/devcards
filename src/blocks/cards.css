@@ -12,7 +12,7 @@
 .cards__list {
   display: grid;
   grid-template-columns: repeat(4, 282px);
-  grid-auto-rows: 360px;
+  grid-auto-rows: minmax(430px, auto);
   gap: 24px;
   list-style: none;
   padding: 24px;

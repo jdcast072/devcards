@@ -11,7 +11,11 @@
 .card__image{
     width: 64px;
     max-width: 64px;
+    cursor: pointer;
 }
+
+
+
 
 .card__content{
     display: flex;
@@ -37,6 +41,7 @@
     min-width: 100%;
     font-size: 15px;
     line-height: 1.5;
+    
 }
 
 .card__actions {
@@ -68,6 +73,10 @@
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
+}
+
+.card__image:hover {
+  transform: scale(1.05);
 }
 
 .card__button:hover .card__button-remove {
