@@ -14,9 +14,6 @@
     cursor: pointer;
 }
 
-
-
-
 .card__content{
     display: flex;
     flex-direction: column;

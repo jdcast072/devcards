@@ -127,7 +127,7 @@ function fillProfileForm() {
   // Copiar el contenido visible del perfil en los campos del formulario.
   inputName.value = profileName.textContent;
   inputCareer.value = profileCareer.textContent;
-  inputDescription.value = profileDescription.textContent;
+  inputDescription.value = profileDescription.textContent.replace(/\s+/g, " ").trim();
 }
 
 // Función declarativa, controlador para agregar los datos en los campos del formulario de perfil
